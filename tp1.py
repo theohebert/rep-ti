@@ -21,10 +21,14 @@ def test_associativity(a,b, nombre_essais):
 def ecriture_resultats(nom_fichier, a, b, NombreEssais, NombreReussites):
     with open(nom_fichier, "w") as fichier:
         fichier.write(f"Intervalle de tirage uniforme: [{a}, {b}]\n")
+        print(f"Intervalle de tirage uniforme: [{a}, {b}]")
         fichier.write(f"Nombre d'essais: {NombreEssais}\n")
+        print(f"Nombre d'essais: {NombreEssais}")
         fichier.write(f"Nombre de réussites: {NombreReussites} sur {NombreEssais}\n")
+        print(f"Nombre de réussites: {NombreReussites} sur {NombreEssais}")
         pourcentage = (NombreReussites / NombreEssais) * 100
         fichier.write(f"Pourcentage de réussites: {pourcentage:.2f}%\n")
+        print(f"Pourcentage de réussites: {pourcentage:.2f}%")
         fichier.close()
 
 
