@@ -1,8 +1,6 @@
-import random 
-import pandas as pd
-import math
-import decimal
+import random
 
+random.seed(0)
 
 NombreEssais = 100000
 NombreReussites = 0
@@ -14,10 +12,9 @@ print(f"Intervalle de tirage uniforme: [{a}, {b}]")
 print(f"Nombre d'essais: {NombreEssais}")
 print("On compte le nombre de fois où (x+y)+z == x+(y+z)")
 
-fichier = open("tp1_resultats.txt", "w")
+fichier = open("answer_associativity.txt", "w")
 fichier.write(f"Intervalle de tirage uniforme: [{a}, {b}]\n")
 fichier.write(f"Nombre d'essais: {NombreEssais}\n")
-
 
 for i in range(NombreEssais):
     x = random.uniform(a, b)

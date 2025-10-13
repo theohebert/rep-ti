@@ -1,4 +1,0 @@
-Test de l'associativité de l'addition en virgule flottante
-Intervalle de tirage uniforme: [0, 1]
-Nombre d'essais: 100000
-Nombre de réussites: 82735 sur 100000
