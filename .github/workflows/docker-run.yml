@@ -3,12 +3,11 @@ name: Run Docker on Push
 on:
   push:
     branches:
-      - main  
-      - Theo
+      - '**'
 jobs:
   run-docker:
     runs-on: ubuntu-latest
-
+ 
     permissions:
       contents: write 
     steps:
