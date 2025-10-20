@@ -23,4 +23,4 @@ jobs:
       # Étape 3 : Exécuter le conteneur
       - name: Run Docker container
         run: |
-          sudo docker run -v $(pwd):/app tp1
+          sudo docker run -v ${{github.workspace}}:/app tp1
