@@ -15,7 +15,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false  # important pour éviter les conflits de jetons
+          persist-credentials: false  # important pour reconfigurer l'authentification plus tard
 
       # Étape 2 : Construire l'image Docker à partir du Dockerfile
       - name: Build Docker image
@@ -32,6 +32,10 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # 🔧 on reconfigure le remote avec le token GitHub Actions
+          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
+
           git add .
           git commit -m "Add results from Docker run" || echo "No changes to commit"
-          git push
+          git push origin HEAD:${{ github.ref_name }}
