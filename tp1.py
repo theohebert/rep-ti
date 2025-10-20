@@ -34,7 +34,7 @@ def ecriture_resultats(nom_fichier, a, b, NombreEssais, NombreReussites):
 
 
 if __name__ == "__main__":
-    random.seed(12)
+    random.seed(120)
     NombreEssais = 100000
     a = 0
     b = 1
