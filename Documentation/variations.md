@@ -8,6 +8,8 @@ De la même manière, la **seed de l'aléatoire a un leger impact sur les result
 
 A noter que les scripts ont été lancé dans un même environnement de python (3.12.3) et sur une machine locale (ubuntu 24.04.1). Docker étant hors service, nous n'avons pas pu faire varier la version de l'os et de python qui auraient pu impacter les résultats.
 
+Nous avons finallement pu tester avec avec la version 3.13 de python et aucun changement n'est apparu dans nos résultats.
+
 
 
 
