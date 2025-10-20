@@ -1,0 +1,34 @@
+name: Run Docker on Push
+
+on:
+  push:
+    branches:
+      - main  
+      - Theo
+jobs:
+  run-docker:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write 
+    steps:
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Build Docker image
+        run: docker build -t tp1 .
+
+      - name: Run Docker container
+        run: docker run -v ${{ github.workspace }}:/app tp1
+ 
+      - name: Commit and push results
+        
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add .
+          git commit -m "Add results from Docker run" || echo "No changes to commit"
+          git push
