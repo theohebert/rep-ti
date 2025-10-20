@@ -37,7 +37,7 @@ if __name__ == "__main__":
     random.seed(0)
     NombreEssais = 100000
     a = 0
-    b = 1
+    b = 1000
     
     NombreReussites = test_associativity(a, b, NombreEssais)
     ecriture_resultats("answer_associativity.txt", a, b, NombreEssais, NombreReussites)
