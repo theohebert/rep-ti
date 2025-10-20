@@ -3,24 +3,30 @@ name: Run Docker on Push
 on:
   push:
     branches:
-      - main
-      - Theo  # ou remplace par ta branche (ex: master, dev, etc.)
-
+      - main  
 jobs:
   run-docker:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape 1 : Récupérer le code
+
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false  
 
-      # Étape 2 : Construire l'image Docker à partir du Dockerfile
       - name: Build Docker image
-        run: |
-          docker build -t tp1 .
+        run: docker build -t tp1 .
 
-      # Étape 3 : Exécuter le conteneur
       - name: Run Docker container
+        run: docker run -v ${{ github.workspace }}:/app tp1
+ 
+      - name: Commit and push results
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          sudo docker run -v ${{github.workspace}}:/app tp1
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Add results from Docker run" || echo "No changes to commit"
+          git push
