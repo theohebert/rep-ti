@@ -3,39 +3,30 @@ name: Run Docker on Push
 on:
   push:
     branches:
-      - main
-      - Theo  # ta branche de travail
-
+      - main  
+      - Theo
 jobs:
   run-docker:
     runs-on: ubuntu-latest
 
     steps:
-      # Étape 1 : Récupérer le code
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false  # important pour reconfigurer l'authentification plus tard
+          persist-credentials: false  
 
-      # Étape 2 : Construire l'image Docker à partir du Dockerfile
       - name: Build Docker image
         run: docker build -t tp1 .
 
-      # Étape 3 : Exécuter le conteneur
       - name: Run Docker container
         run: docker run -v ${{ github.workspace }}:/app tp1
-
-      # Étape 4 : Commit & push les fichiers générés
+ 
       - name: Commit and push results
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          # 🔧 on reconfigure le remote avec le token GitHub Actions
-          git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}
-
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
           git add .
           git commit -m "Add results from Docker run" || echo "No changes to commit"
-          git push origin HEAD:${{ github.ref_name }}
+          git push
