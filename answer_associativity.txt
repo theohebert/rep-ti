@@ -1,4 +1,4 @@
-Intervalle de tirage uniforme: [10.0, 100.0]
-Nombre d'essais: 700
-Nombre de réussites: 426 sur 700
-Pourcentage de réussites: 60.86%
+Intervalle de tirage uniforme: [0, 1]
+Nombre d'essais: 100000
+Nombre de réussites: 82766 sur 100000
+Pourcentage de réussites: 82.77%
