@@ -14,4 +14,3 @@ for factor in factors_comb:
     generated_code = template.render(factor)
     exec(generated_code)
     print("\n")
-
