@@ -11,6 +11,7 @@ factors_comb = [
 ]
 
 for factor in factors_comb:
+    print(f"Running test with parameters: {factor}")
     generated_code = template.render(factor)
     exec(generated_code)
     print("\n")
