@@ -1,6 +1,6 @@
 from jinja2 import Template
 
-tenplate_content = open('property_template.py.jinja').read()
+tenplate_content = open('jinja_test/property_template.py.jinja').read()
 template = Template(tenplate_content)
 
 factors_comb = [
@@ -11,6 +11,7 @@ factors_comb = [
 ]
 
 for factor in factors_comb:
+    print(f"Running test with parameters: {factor}")
     generated_code = template.render(factor)
     exec(generated_code)
     print("\n")
