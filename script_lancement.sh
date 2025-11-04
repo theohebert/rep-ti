@@ -1,0 +1,3 @@
+#!/bin/bash
+python3 runtime_parameters/run_runtime_parameters.py
+python3 tp1.py
