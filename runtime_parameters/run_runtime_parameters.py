@@ -1,8 +1,8 @@
 import random
 import pandas as pd
 
-def test_associativity(a,b, nombre_essais,op1,op2):
-    random.seed(0)
+def test_associativity(a,b, nombre_essais,op1,op2,seed=0):
+    random.seed(seed)
     NombreReussites = 0
     for i in range(nombre_essais):
         x = random.uniform(a, b)
@@ -60,8 +60,8 @@ if __name__ == "__main__":
                     for b in b_list:
                         if a >= b:
                             continue
-                        print(f"Running test with parameters: op1={factor['op1']}, op2={factor['op2']}, repetition={repetition}, seed={factor['seed']}, a={a}, b={b}")
-                        NombreReussites = test_associativity(a, b, repetition, factor['op1'], factor['op2'])
-                        res_df = pd.concat([res_df, pd.DataFrame({'op1': [factor['op1']], 'op2': [factor['op2']], 'repetition': [repetition], 'seed': [factor['seed']], 'a': [a], 'b': [b], 'NombreReussites': [NombreReussites], 'NombreEssais': [repetition], 'PourcentageReussites': [(NombreReussites/repetition)*100]})], ignore_index=True)
+                        print(f"Running test with parameters: op1={factor['op1']}, op2={factor['op2']}, repetition={repetition}, seed={seed}, a={a}, b={b}")
+                        NombreReussites = test_associativity(a, b, repetition, factor['op1'], factor['op2'],seed)
+                        res_df = pd.concat([res_df, pd.DataFrame({'op1': [factor['op1']], 'op2': [factor['op2']], 'repetition': [repetition], 'seed': [seed], 'a': [a], 'b': [b], 'NombreReussites': [NombreReussites], 'NombreEssais': [repetition], 'PourcentageReussites': [(NombreReussites/repetition)*100]})], ignore_index=True)
 
     res_df.to_csv("results_associativity.csv", index=False)

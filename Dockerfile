@@ -2,5 +2,6 @@ FROM python:3.9-slim
 WORKDIR /app
 COPY . /app
 RUN pip install -r requirements.txt
-CMD ["python", "tp1.py"]
-CMD ["python", "runtime_parameters/run_runtime_parameters.py"]
+RUN chmod +x ./script_lancement.sh
+CMD ["./script_lancement.sh"]
+
