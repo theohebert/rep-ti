@@ -3,3 +3,4 @@ WORKDIR /app
 COPY . /app
 RUN pip install -r requirements.txt
 CMD ["python", "tp1.py"]
+CMD ["python", "runtime_parameters/run_runtime_parameters.py"]

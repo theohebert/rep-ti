@@ -1,5 +1,4 @@
 import random
-import argparse
 import pandas as pd
 
 def test_associativity(a,b, nombre_essais,op1,op2):
@@ -40,15 +39,14 @@ def ecriture_resultats(nom_fichier, a, b, NombreEssais, NombreReussites):
 
 if __name__ == "__main__":
     random.seed(0)
-    
+    #utilse seulement pour comparer les differentes combinaisons de parametres
     factors_comb = [
-    {"op1": "(x + y) + z", "op2": "x + (y + z)", "seed": 0},
-    {"op1": "(x + y) + z", "op2": "x + (y + z)", "seed": 0},
-    {"op1": "(x + y) + z", "op2": "x + (y + z)", "seed": 0},
-    {"op1": "(x + y) + z", "op2": "x + (y + z)", "seed": 0},
-
+    {"op1": "(x + y) + z", "op2": "x + (y + z)"}
+    #{"op1": "(x + y) + z", "op2": "x + (y + z)"},
+    #{"op1": "(x + y) + z", "op2": "x + (y + z)"},
+    #{"op1": "(x + y) + z", "op2": "x + (y + z)"},
     ]
-
+    seed = [0,1,2,3,4,5,6,7,8,9]
     repetions_list = [10,20,50,100,500,1000,2000,5000,10000,50000, 100000]
     a_list = [-1,0,1,10,20,50,100]
     b_list = [1,5,10,20,50,100,10000]
@@ -56,13 +54,14 @@ if __name__ == "__main__":
     res_df.to_csv("results_associativity.csv", index=False)
     
     for factor in factors_comb:
-        for repetition in repetions_list:
-            for a in a_list:
-                for b in b_list:
-                    if a >= b:
-                        continue
-                    print(f"Running test with parameters: op1={factor['op1']}, op2={factor['op2']}, repetition={repetition}, seed={factor['seed']}, a={a}, b={b}")
-                    NombreReussites = test_associativity(a, b, repetition, factor['op1'], factor['op2'])
-                    res_df = pd.concat([res_df, pd.DataFrame({'op1': [factor['op1']], 'op2': [factor['op2']], 'repetition': [repetition], 'seed': [factor['seed']], 'a': [a], 'b': [b], 'NombreReussites': [NombreReussites], 'NombreEssais': [repetition], 'PourcentageReussites': [(NombreReussites/repetition)*100]})], ignore_index=True)
+        for seed in seed:
+            for repetition in repetions_list:
+                for a in a_list:
+                    for b in b_list:
+                        if a >= b:
+                            continue
+                        print(f"Running test with parameters: op1={factor['op1']}, op2={factor['op2']}, repetition={repetition}, seed={factor['seed']}, a={a}, b={b}")
+                        NombreReussites = test_associativity(a, b, repetition, factor['op1'], factor['op2'])
+                        res_df = pd.concat([res_df, pd.DataFrame({'op1': [factor['op1']], 'op2': [factor['op2']], 'repetition': [repetition], 'seed': [factor['seed']], 'a': [a], 'b': [b], 'NombreReussites': [NombreReussites], 'NombreEssais': [repetition], 'PourcentageReussites': [(NombreReussites/repetition)*100]})], ignore_index=True)
 
     res_df.to_csv("results_associativity.csv", index=False)
