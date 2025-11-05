@@ -1,6 +1,6 @@
 from jinja2 import Template
 
-tenplate_content = open('jinja_test/property_template.py.jinja').read()
+tenplate_content = open('Template_jinja/property_template.py.jinja').read()
 template = Template(tenplate_content)
 
 factors_comb = [

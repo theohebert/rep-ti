@@ -1,0 +1,22 @@
+from decimal import Decimal, getcontext
+
+getcontext().prec = {{ prec }}
+NombreAnnees = {{ annees }}
+
+monnaie = Decimal(1).exp()
+
+#annees = pd.DataFrame(columns=['Annee','monnaie'])
+
+if __name__ == '__main__':
+    for i in range(1,NombreAnnees+1):
+        monnaie = monnaie - 1
+        monnaie = monnaie * i
+        #annees = pd.concat([annees, pd.DataFrame({'Annee': [i],'monnaie': [monnaie]})], ignore_index=True)
+
+    monnaie = monnaie - 1
+    print(monnaie)
+
+    res = {"monnaie": monnaie,"nombreAnnees": NombreAnnees, "prec": {{ prec }} }
+
+{#    with open("answer_banking_problem.txt","w") as f:#}
+{#        f.write(f"Il restera {monnaie} euros après {NombreAnnees} années\n")#}
