@@ -1,7 +1,7 @@
 from jinja2 import Template
 import pandas as pd
 
-tenplate_content = open('banking_problem/banking_problem.py.jinja').read()
+tenplate_content = open('./banking_problem.py.jinja').read()
 template = Template(tenplate_content)
 
 prec_list = [2,10,20,50,100]
@@ -15,11 +15,11 @@ for factor in factors_comb:
     print(f"Running test with parameters: {factor} \n")
     generated_code = template.render(factor)
     local_vars = {}
-    exec(generated_code, {}, local_vars)
+    exec(generated_code, {"__name__": "__main__"}, local_vars)
     if "res" in local_vars:
         res = local_vars["res"]
-        result = pd.concat([result,pd.DataFrame({"monnaie":res["monnaie"],"nombreAnnees":res["nombreAnnees"],"prec":res["prec"]})])
+        result = pd.concat([result,pd.DataFrame({"monnaie":[res["monnaie"]],"nombreAnnees":[res["nombreAnnees"]],"prec":[res["prec"]]})])
     else:
-        exit(1)
+        print("aiie")
 
 result.to_csv("results_banking_problem.csv", index=False)
