@@ -1,3 +1,5 @@
+# <span style="color:red"> /!\ Pas a jour </span>
+
 # How to run simply
 
 You should execute the script *tp1.py* and you then will have the file *answer_associativity.txt* in wich you should have the result.
@@ -39,5 +41,5 @@ sudo docker build -t banking_problem ./banking_problem
 
 And then run with :
 ```bash
-sudo docker run -v  /outputs:/app/outputs banking_problem
+sudo docker run -v  .:/app banking_problem
 ```
