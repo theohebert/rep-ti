@@ -1,7 +1,7 @@
 from jinja2 import Template
 import pandas as pd
 
-tenplate_content = open('./banking_problem.py.jinja').read()
+tenplate_content = open('banking_problem/banking_problem.py.jinja').read()
 template = Template(tenplate_content)
 
 prec_list = [2,10,20,50,100]
