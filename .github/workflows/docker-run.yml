@@ -5,6 +5,7 @@ on:
     branches:
       - main  
       - Dev-Théo
+      - Isidore
 jobs:
   run-docker:
     runs-on: ubuntu-latest
