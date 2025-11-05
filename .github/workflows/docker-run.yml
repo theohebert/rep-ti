@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main  
-      - Theo
+      - Dev-Théo
 jobs:
   run-docker:
     runs-on: ubuntu-latest
