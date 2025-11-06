@@ -47,12 +47,12 @@ if __name__ == "__main__":
     #{"op1": "(x + y) + z", "op2": "x + (y + z)"},
     ]
     seed = [0,1,2,4,8,16]
-    repetions_list = [10,20,100,500,2000,5000,50000]
+    repetions_list = [10,20,100,500,2000,5000,10000]
     a_list = [-1,0,1,10,20,50,100]
     b_list = [1,5,10,20,50,100,10000]
     res_df = pd.DataFrame(columns=["op1", "op2", "repetition", "seed", "a", "b", "NombreReussites", "NombreEssais", "PourcentageReussites"])
     res_df.to_csv("results_associativity.csv", index=False)
-    
+    print("Starting tests...")
     for factor in factors_comb:
         for seed in seed:
             for repetition in repetions_list:

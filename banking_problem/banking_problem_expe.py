@@ -4,8 +4,8 @@ import pandas as pd
 tenplate_content = open('banking_problem/banking_problem.py.jinja').read()
 template = Template(tenplate_content)
 
-prec_list = [2,10,20,50,100]
-annees_list = [10,50,60,75]
+prec_list = [1,2,3,4,5,8,10,20,50,100]
+annees_list = [1,2,5,10,15,20,30,40,50,60,75]
 
 factors_comb = [{"prec":prec,"annees":annes} for prec in prec_list for annes in annees_list]
 
